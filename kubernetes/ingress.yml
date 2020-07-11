@@ -1,0 +1,15 @@
+---
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: logs
+  namespace: logging
+spec:
+  rules:
+  - host: logs.logging.svc.kube.com # Replace with appropriate URL
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: file-browser
+          servicePort: 80

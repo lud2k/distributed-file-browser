@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "outDir": "../dist/",
+    "sourceMap": true,
+    "noImplicitAny": true,
+    "suppressImplicitAnyIndexErrors": true,
+    "allowSyntheticDefaultImports": true,
+    "experimentalDecorators": true,
+    "allowJs": true,
+    "module": "commonjs",
+    "target": "es6"
+  },
+  "include": ["./*", "./**/*"],
+  "exclude": ["node_modules"]
+}

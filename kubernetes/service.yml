@@ -1,0 +1,15 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: file-browser
+  namespace: logging
+spec:
+  ports:
+    - name: http
+      protocol: TCP
+      port: 80
+      targetPort: 3000
+  selector:
+    name: file-browser
+  type: NodePort
+  externalTrafficPolicy: Local
