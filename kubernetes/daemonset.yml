@@ -1,0 +1,51 @@
+---
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: file-browser
+  namespace: logging
+spec:
+  selector:
+    matchLabels:
+      name: file-browser
+  template:
+    metadata:
+      labels:
+        name: file-browser
+    spec:
+      serviceAccountName: file-browser
+      volumes:
+        - name: log-volume
+          hostPath:
+            path: /var/log
+            type: ''
+      containers:
+      - name: file-browser
+        image: lud2k/distributed-file-browser:1.0.0
+        env:
+        - name: MODE
+          value: kubernetes
+        - name: DIRECTORY
+          value: /mnt/data
+        - name: APP_NAME
+          value: file-browser
+        - name: NAMESPACE
+          value: logging
+        - name: TITLE
+          value: Logs
+        - name: ROOT_DIR_NAME
+          value: logs
+        - name: HOST
+          valueFrom:
+            fieldRef:
+              apiVersion: v1
+              fieldPath: status.podIP
+        resources:
+          limits:
+            memory: 250Mi
+          requests:
+            cpu: 100m
+            memory: 250Mi
+        volumeMounts:
+        - name: log-volume
+          mountPath: /mnt/data

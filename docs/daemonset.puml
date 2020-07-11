@@ -1,0 +1,34 @@
+@startuml
+
+skinparam defaultTextAlignment center
+
+actor "Engineer" as eng
+
+rectangle "Kube Node 1" {
+  rectangle "Pod 1" as pod1
+  database "Logs" as log1
+}
+
+rectangle "Kube Node 2" {
+  rectangle "Pod 2" as pod2
+  database "Logs" as log2
+}
+
+rectangle "Kube Node 3" {
+  rectangle "Pod 3" as pod3
+  database "Logs" as log3
+}
+
+cloud "Ingress\nlogs.svc.kube" as ingress
+
+eng --> ingress
+ingress --> pod1
+pod1 --> log1
+ingress --> pod2
+pod2 --> log2
+ingress --> pod3
+pod3 --> log3
+pod1 <-> pod2
+pod2 <-> pod3
+
+@enduml
