@@ -27,7 +27,7 @@
     "@types/tail": "^2.0.0",
     "@types/tiny-async-pool": "^1.0.0",
     "awesome-typescript-loader": "^5.2.1",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "lodash": "^4.17.19",
     "moment": "^2.26.0",
     "node-fetch": "^2.6.1",
